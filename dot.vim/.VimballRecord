@@ -1,0 +1,3 @@
+writebackup.vba: call delete('/Users/hiroc/.vim/autoload/writebackup.vim')|call delete('/Users/hiroc/.vim/plugin/writebackup.vim')|call delete('/Users/hiroc/.vim/doc/writebackup.txt')
+Align.vba: call delete('/Users/hiroc/.vim/plugin/AlignPlugin.vim')|call delete('/Users/hiroc/.vim/plugin/AlignMaps.vim')|call delete('/Users/hiroc/.vim/plugin/cecutil.vim')|call delete('/Users/hiroc/.vim/doc/Align.txt')|call delete('/Users/hiroc/.vim/autoload/Align.vim')
+refe.vba: call delete('/Users/hiroc/.vim/plugin/refe.vim')|call delete('/Users/hiroc/.vim/doc/refe.txt')

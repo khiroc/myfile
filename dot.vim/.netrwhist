@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/hiroc/.vim'
+let g:netrw_dirhist_2='/Users/hiroc/.vim/info'
+let g:netrw_dirhist_3='/Users/hiroc/.vim/info/ku'
+let g:netrw_dirhist_4='/Users/hiroc/.vim/info'

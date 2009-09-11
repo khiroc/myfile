@@ -1,0 +1,15 @@
+autodetach on
+escape ^w^w
+hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+
+startup_message off
+vbell off
+
+# screen 起動時に画面を上下二分割する
+# screen 0
+# screen 1
+# select 0
+# split
+# focus
+# select 1
+
