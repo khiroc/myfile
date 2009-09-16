@@ -1,4 +1,4 @@
-" my vimrc  Last Change: 11-Sep-2009.
+" my vimrc  Last Change: 15-Sep-2009.
 
 :if version < 701
    :finish
@@ -172,6 +172,9 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+" <TAB> completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " easy buffer move バッファ移動のショートカット
 " nnoremap <silent> <Space>n :<C-u>bnext<CR>
 " nnoremap <silent> <Space>p :<C-u>bprevious<CR>
@@ -277,10 +280,16 @@ abbreviate do diffoff
 " vnoremap z/ <ESC>/\%V
 " vnoremap z? <ESC>?\%V
 
+"vimの戦闘力を計算する
+command! -bar -nargs=? -complete=file CalcFP echo len(filter(readfile(empty(<q-args>) ? $MYVIMRC : expand(<q-args>)),'v:val !~ "^\\s*$\\|^\\s*\""'))
+
 
 
 " ---------------------------------------------------------------------
 " plugin configure プラグインの設定
+
+" autocomplpop.vim
+let g:acp_ignorecaseOption = 1
 
 " buftabs.vim
 "バッファタブにパスを省略してファイル名のみ表示する
@@ -330,13 +339,17 @@ let MRU_Window_Height = 15
 
 " neocomplcache.vim
 " Don't use autocomplpop.
-" let g:AutoComplPop_NotEnableAtStartup = 1
+let g:AutoComplPop_NotEnableAtStartup = 1
 " Use neocomplcache.
-" let g:NeoComplCache_EnableAtStartup = 1
+let g:NeoComplCache_EnableAtStartup = 1
 " hoge -> hoge,Hoge || Hoge -> Hoge
 let g:NeoComplCache_SmartCase = 1
 " Use previous keyword completion.(前の単語を考慮して候補の並びを決定する)
 let g:NeoComplCache_PreviousKeywordCompletion = 1
+" Use tags auto update.
+" let g:NeoComplCache_TagsAutoUpdate = 1
+" Use preview window.
+let g:NeoComplCache_EnableInfo = 1
 " Use camel case completion. (AE -> ArgumentsException)
 let g:NeoComplCache_EnableCamelCaseCompletion = 1
 " Use underbar completion. (p_h -> public_html)
@@ -347,6 +360,10 @@ let g:NeoComplCache_MinSyntaxLength = 3
 let g:NeoComplCache_SkipInputTime = '0.2'
 " alphabeticalorder (候補の順番をアルファベット順にする)
 " let g:NeoComplCache_AlphabeticalOrder = 1
+" Set manual completion length.
+let g:NeoComplCache_ManualCompletionStartLength = 1
+" C-nでneocomplcache補完
+" inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 
 " sudo.vim
 nnoremap <Space>S :<C-u>e sudo:%<CR>
