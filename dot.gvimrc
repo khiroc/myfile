@@ -30,7 +30,7 @@ if has("gui_macvim")
   " window maximum ウィンドウサイズをMAXに指定 
   set fuoptions=maxvert,maxhorz
   " transparency 半透明
-  set transparency=17
+  set transparency=25
 end 
 
 " IME状態に応じたカーソル色を設定

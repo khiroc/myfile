@@ -1,8 +1,13 @@
-" my vimrc  Last Change: 15-Sep-2009.
+" my vimrc  Last Change: 22-Sep-2009.
 
 :if version < 701
    :finish
 :endif
+
+"reset MyAutoCmd
+augroup MyAutoCmd
+  autocmd!
+augroup END
 
 
 " ---------------------------------------------------------------------
@@ -42,8 +47,8 @@ set expandtab
 set tabstop=4
 set shiftwidth=2
 set softtabstop=2
-autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd FileType make setlocal noexpandtab
+autocmd MyAutoCmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd MyAutoCmd FileType make setlocal noexpandtab
 
 " break delete バックスペース拡張
 set backspace=2 
@@ -173,7 +178,7 @@ nmap g* g*zz
 nmap g# g#zz
 
 " <TAB> completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " easy buffer move バッファ移動のショートカット
 " nnoremap <silent> <Space>n :<C-u>bnext<CR>
@@ -214,7 +219,7 @@ noremap <Leader><Leader> :<C-u>up<CR>
 " quick shell
 " nnoremap <Space>s :<C-u>shell<CR>
 " date insert
-command Date :r !date
+command! Date :r !date
 " sudo write
 " nnoremap <Space>S :<C-u>w !sudo tee %<CR>
 
@@ -272,9 +277,9 @@ command! -bang -nargs=? Euc edit<bang> ++enc=euc-jp <args>
 nnoremap <Space>a :<C-u>args **/*.*
 
 " vimdiff abbreviate diff略語
-abbreviate dt diffthis
-abbreviate ds diffsplit
-abbreviate do diffoff
+cabbrev dt diffthis
+cabbrev ds diffsplit
+cabbrev do diffoff
 
 " v mode search 直前に選択した範囲で検索
 " vnoremap z/ <ESC>/\%V
@@ -321,7 +326,7 @@ nnoremap <silent> [Fuzzy]r :<C-u>FufRenewCache<CR>
 
 " Ku.vim
 " enter mapping overwrite
-autocmd User plugin-ku-buffer-initialized call ku#default_key_mappings(1)
+autocmd MyAutoCmd User plugin-ku-buffer-initialized call ku#default_key_mappings(1)
 " shortcut
 nnoremap <Space>kb :<C-u>Ku buffer<Return>
 nnoremap <Space>kf :<C-u>Ku file<Return>
@@ -362,8 +367,11 @@ let g:NeoComplCache_SkipInputTime = '0.2'
 " let g:NeoComplCache_AlphabeticalOrder = 1
 " Set manual completion length.
 let g:NeoComplCache_ManualCompletionStartLength = 1
-" C-nでneocomplcache補完
-" inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
+" C-jでneocomplcache補完
+inoremap <expr><C-j>  pumvisible() ? "\<C-j>" : "\<C-x>\<C-u>\<C-p>"
+
+" refe.vim
+" refer to ftplugin
 
 " sudo.vim
 nnoremap <Space>S :<C-u>e sudo:%<CR>

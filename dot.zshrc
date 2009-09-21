@@ -8,6 +8,10 @@ if [ -f /etc/profile ]; then
 	. /etc/profile
 fi
 
+export PATH=/usr/local/bin:${PATH}
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export MANPATH=/opt/local/man:$MANPATH
+
 # プロンプト、表示
 # rootは普段使わないからてきとー
 if [ $USER = "root" ]
